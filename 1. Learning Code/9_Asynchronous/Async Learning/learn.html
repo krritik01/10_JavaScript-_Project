@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Asynchronous JavaScript</title>
+    <link rel="stylesheet" href="learn.css">
+</head>
+
+<body>
+
+    <header>
+        <h1>Asynchronous JavaScript Learning</h1>
+    </header>
+
+    <main>
+        <section id="introduction">
+            <h2>Introduction to Asynchronous JavaScript</h2>
+            <p>
+                Asynchronous JavaScript allows you to execute code non-blockingly, making it possible to handle multiple
+                operations simultaneously. This is crucial for tasks like fetching data from APIs, handling user
+                interactions, and more.
+            </p>
+            <p>
+                In traditional synchronous programming, tasks are executed one after the other, blocking the execution
+                until each task is completed. Asynchronous programming enables tasks to overlap, enhancing the
+                efficiency and responsiveness of your applications.
+            </p>
+        </section>
+
+        <section id="callbacks">
+            <h2>Callbacks</h2>
+            <p>
+                Callbacks are functions that are passed as arguments to other functions. They are commonly used in
+                asynchronous operations to handle the completion of a task. Callbacks are essential in scenarios like
+                handling AJAX requests or reading files asynchronously.
+            </p>
+            <p>Example of using a callback:</p>
+            <pre>
+<code>
+function fetchData(callback) {
+    setTimeout(function () {
+        console.log('Data fetched!');
+        callback();
+    }, 2000);
+}
+
+function processData() {
+    console.log('Data processed!');
+}
+
+fetchData(processData);
+</code>
+            </pre>
+            <p>
+                In this example, <code>processData</code> is a callback function passed to <code>fetchData</code>. After
+                fetching data asynchronously, the callback is invoked to process the data.
+            </p>
+        </section>
+
+        <section id="promises">
+            <h2>Promises</h2>
+            <p>
+                Promises provide a cleaner way to work with asynchronous code. They represent the eventual completion or
+                failure of an asynchronous operation and allow chaining multiple operations. Promises have three states:
+                pending, resolved (fulfilled), and rejected.
+            </p>
+            <p>Example of using a Promise:</p>
+            <pre>
+<code>
+function fetchData() {
+    return new Promise(function (resolve, reject) {
+        setTimeout(function () {
+            const data = { message: 'Data fetched!' };
+            resolve(data);
+        }, 2000);
+    });
+}
+
+function processData(data) {
+    console.log('Data processed:', data.message);
+}
+
+fetchData()
+    .then(processData)
+    .catch(function (error) {
+        console.error('Error:', error);
+    });
+</code>
+            </pre>
+            <p>
+                In this example, <code>fetchData</code> returns a Promise. The <code>then</code> method is used to
+                handle the resolved state, and the <code>catch</code> method handles any errors.
+            </p>
+            <p>
+                 <strong>Pending:</strong> The initial state when a Promise is created. <br>
+                 <strong>Resolved (Fulfilled):</strong> The state when the asynchronous operation is successful. <br>
+                 <strong>Rejected:</strong> The state when the asynchronous operation encounters an error.
+            </p>
+        </section>
+
+        <section id="async-await">
+            <h2>Async/Await</h2>
+            <p>
+                Async/Await is a modern syntax for handling asynchronous operations. It makes asynchronous code look and
+                behave more like synchronous code, making it easier to understand and maintain. The <code>async</code>
+                keyword is used to define asynchronous functions, and <code>await</code> is used to wait for a Promise
+                to settle.
+            </p>
+            <p>Example of using Async/Await:</p>
+            <pre>
+<code>
+async function fetchData() {
+    return new Promise(function (resolve) {
+        setTimeout(function () {
+            const data = { message: 'Data fetched!' };
+            resolve(data);
+        }, 2000);
+    });
+}
+
+async function processData() {
+    const data = await fetchData();
+    console.log('Data processed:', data.message);
+}
+
+processData();
+</code>
+            </pre>
+            <p>
+                In this example, the <code>async</code> keyword is used in the <code>fetchData</code> and
+                <code>processData</code> functions. The <code>await</code> keyword is used within
+                <code>processData</code> to wait for the asynchronous <code>fetchData</code> function to complete.
+            </p>
+            <p>
+                 <strong>Async Function:</strong> Functions marked with the <code>async</code> keyword return Promises
+                implicitly. They can contain <code>await</code> expressions to pause execution until the Promise
+                settles. <br>
+                 <strong>Await Expression:</strong> Pauses the execution of an async function until the Promise is
+                settled (resolved or rejected) and returns the resolved value.
+            </p>
+        </section>
+    </main>
+
+</body>
+
+</html>
