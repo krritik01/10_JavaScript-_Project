@@ -1,0 +1,29 @@
+body{
+    background-color: aquamarine;
+}
+
+.conatiner{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    background-color:bisque;
+    border-radius: 10px;
+    padding: 20px;
+}
+
+.button{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;  
+}
+
+button{
+    padding: 5px;
+    border-radius: 10px;
+    transition: all ease 0.4s;
+}
+
+button:hover{
+    background-color:aqua;
+}
