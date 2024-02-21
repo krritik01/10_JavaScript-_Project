@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript and Object-Oriented Programming Learning</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header>
+        <h1>JavaScript and Object-Oriented Programming Learning</h1>
+    </header>
+
+    <nav>
+        <a href="#javascript">JavaScript</a> |
+        <a href="#classes">Classes</a> |
+        <a href="#oop">Object-Oriented Programming (OOP)</a> |
+        <a href="#oop-parts">OOP Parts</a> 
+    </nav>
+
+    <section id="javascript">
+        <h2>JavaScript</h2>
+        <p>JavaScript is a versatile programming language commonly used for web development. It supports both
+            object-oriented and functional programming paradigms, enhancing interactivity and dynamic behavior of websites.</p>
+
+        <p><strong>Example:</strong></p>
+        <pre>
+      <code>
+        // Simple JavaScript code
+        console.log("Hello, JavaScript!");
+      </code>
+    </pre>
+    </section>
+
+    <section id="classes">
+        <h2>Classes in JavaScript</h2>
+        <p>JavaScript classes provide a structured and familiar way to create objects, encapsulate data, and define methods.
+            Introduced in ECMAScript 6 (ES6), the class syntax improves object creation and inheritance.</p>
+
+        <p><strong>Example of a simple class in JavaScript:</strong></p>
+        <pre>
+      <code>
+        class Animal {
+          constructor(name) {
+            this.name = name;
+          }
+
+          speak() {
+            console.log(`${this.name} makes a sound.`);
+          }
+        }
+
+        const dog = new Animal('Dog');
+        dog.speak(); // Output: Dog makes a sound.
+      </code>
+    </pre>
+    </section>
+
+    <section id="oop">
+        <h2>Object-Oriented Programming (OOP)</h2>
+        <p>Object-Oriented Programming is a paradigm that uses objects to organize code, each containing properties and methods.
+            It simplifies complex systems, promotes modularity, reusability, abstraction, encapsulation, inheritance, and
+            polymorphism.</p>
+
+        <h2>Four Pillars of OOP</h2>
+
+        <p><strong>1. Abstraction:</strong></p>
+        <p>Abstraction involves simplifying complex systems by modeling classes based on essential properties and
+            behaviors. It allows developers to focus on the relevant aspects of an object while ignoring unnecessary
+            details.</p>
+
+        <p><strong>Example:</strong></p>
+        <pre>
+      <code>
+        // Abstraction using a Car class
+        class Car {
+          constructor(model, year) {
+            this.model = model;
+            this.year = year;
+          }
+
+          start() {
+            console.log(`${this.model} is starting...`);
+          }
+
+          drive() {
+            console.log(`${this.model} is on the move.`);
+          }
+        }
+
+        const myCar = new Car('Toyota', 2022);
+        myCar.start(); // Output: Toyota is starting...
+        myCar.drive(); // Output: Toyota is on the move.
+      </code>
+    </pre>
+
+        <p><strong>2. Encapsulation:</strong></p>
+        <p>Encapsulation is the bundling of data and methods that operate on that data, restricting access to some of
+            the object's components. It helps in organizing and structuring code by hiding internal details.</p>
+
+        <p><strong>Example:</strong></p>
+        <pre>
+      <code>
+        // Encapsulation using a BankAccount class
+        class BankAccount {
+          constructor(accountNumber, balance) {
+            this.accountNumber = accountNumber;
+            this.balance = balance;
+          }
+
+          deposit(amount) {
+            this.balance += amount;
+            console.log(`Deposited ${amount} into account ${this.accountNumber}.`);
+          }
+
+          withdraw(amount) {
+            if (amount <= this.balance) {
+              this.balance -= amount;
+              console.log(`Withdrawn ${amount} from account ${this.accountNumber}.`);
+            } else {
+              console.log('Insufficient funds.');
+            }
+          }
+
+          getBalance() {
+            return this.balance;
+          }
+        }
+
+        const myAccount = new BankAccount('123456789', 1000);
+        myAccount.deposit(500); // Output: Deposited 500 into account 123456789.
+        myAccount.withdraw(200); // Output: Withdrawn 200 from account 123456789.
+        console.log(`Current balance: ${myAccount.getBalance()}`); // Output: Current balance: 1300
+      </code>
+    </pre>
+
+        <p><strong>3. Inheritance:</strong></p>
+        <p>Inheritance allows a class (subclass/child) to inherit properties and methods from another class
+            (superclass/parent). It promotes code reuse and establishes a relationship between objects.</p>
+
+        <p><strong>Example:</strong></p>
+        <pre>
+      <code>
+        // Inheritance using Animal and Dog classes
+        class Animal {
+          constructor(name) {
+            this.name = name;
+          }
+
+          speak() {
+            console.log(`${this.name} makes a sound.`);
+          }
+        }
+
+        class Dog extends Animal {
+          constructor(name, breed) {
+            super(name);
+            this.breed = breed;
+          }
+
+          bark() {
+            console.log(`${this.name} barks loudly!`);
+          }
+        }
+
+        const myDog = new Dog('Buddy', 'Golden Retriever');
+        myDog.speak(); // Output: Buddy makes a sound.
+        myDog.bark(); // Output: Buddy barks loudly!
+      </code>
+    </pre>
+
+        <p><strong>4. Polymorphism:</strong></p>
+        <p>Polymorphism allows objects to be treated as instances of their parent class, enabling code to work with
+            objects of multiple types through a common interface.</p>
+
+        <p><strong>Example:</strong></p>
+        <pre>
+      <code>
+        // Polymorphism using a Shape interface and Circle/Square classes
+        class Shape {
+          calculateArea() {
+            // To be implemented by subclasses
+          }
+        }
+
+        class Circle extends Shape {
+          constructor(radius) {
+            super();
+            this.radius = radius;
+          }
+
+          calculateArea() {
+            return Math.PI * this.radius * this.radius;
+          }
+        }
+
+        class Square extends Shape {
+          constructor(sideLength) {
+            super();
+            this.sideLength = sideLength;
+          }
+
+          calculateArea() {
+            return this.sideLength * this.sideLength;
+          }
+        }
+
+        const circle = new Circle(5);
+        const square = new Square(4);
+
+        console.log(`Area of the circle: ${circle.calculateArea().toFixed(2)}`); // Output: Area of the circle: 78.54
+        console.log(`Area of the square: ${square.calculateArea()}`); // Output: Area of the square: 16
+      </code>
+    </pre>
+    </section>
+
+    <section id="oop-parts">
+        <h2>Parts of Object-Oriented Programming (OOP)</h2>
+
+        <p><strong>1. Object Literal:</strong></p>
+        <p>The object literal is a simple way to create an object in JavaScript. It allows you to define and create an object with properties and methods on the fly.</p>
+
+        <p>Object literals are useful for creating a single instance of an object with specific properties and methods. They are defined using curly braces `{}` and can contain key-value pairs representing properties and methods.</p>
+
+        <p><strong>Example:</strong></p>
+        <pre>
+          <code>
+            const person = {
+              name: 'John',
+              age: 30,
+              greet: function() {
+                console.log(`Hello, my name is ${this.name}.`);
+              }
+            };
+
+            person.greet(); // Output: Hello, my name is John.
+          </code>
+        </pre>
+
+        <p>In this example, the `person` object has properties `name` and `age`, and a method `greet`. The `greet` method uses the `this` keyword to access the `name` property of the `person` object.</p>
+
+        <p><strong>2. Constructor:</strong></p>
+        <p>A constructor is a function that is called when an object is created. It is responsible for initializing the object's properties.</p>
+
+        <p>Constructors are especially useful when you need to create multiple instances of objects with similar properties and methods. They are invoked using the `new` keyword, and they initialize the properties of the newly created object.</p>
+
+        <p><strong>Example:</strong></p>
+        <pre>
+          <code>
+            // Constructor function for creating Person objects
+            function Person(name, age) {
+              this.name = name;
+              this.age = age;
+            }
+
+            // Creating an instance of the Person object
+            const john = new Person('John', 25);
+            console.log(john); // Output: Person { name: 'John', age: 25 }
+          </code>
+        </pre>
+
+        <p>In this example, the `Person` constructor function takes parameters `name` and `age` and initializes the corresponding properties of the created object using the `this` keyword.</p>
+
+        <p><strong>3. Constructor Function:</strong></p>
+        <p>A constructor function is a regular JavaScript function used to create and initialize objects. It serves as a blueprint for creating instances of objects with shared properties and methods.</p>
+
+        <p>Constructor functions are named with an initial capital letter by convention. When called with the `new` keyword, they create and return a new instance of the object.</p>
+
+        <p><strong>Example:</strong></p>
+        <pre>
+          <code>
+            // Constructor function for creating Car objects
+            function Car(model, year) {
+              this.model = model;
+              this.year = year;
+            }
+
+            // Creating instances of the Car object
+            const myCar = new Car('Toyota', 2022);
+            const anotherCar = new Car('Honda', 2021);
+
+            console.log(myCar); // Output: Car { model: 'Toyota', year: 2022 }
+            console.log(anotherCar); // Output: Car { model: 'Honda', year: 2021 }
+          </code>
+        </pre>
+
+        <p>In this example, the `Car` constructor function creates instances of cars with properties `model` and `year`. The `new` keyword is used to create two separate instances, `myCar` and `anotherCar`, each with its own set of properties.</p>
+
+        <p>Understanding Object Literal, Constructor, and Constructor Function is essential for creating and initializing objects in JavaScript. These concepts provide flexibility and reusability in your code.</p>
+
+        <p><strong>4. Prototypes:</strong></p>
+        <p>Prototypes in JavaScript allow objects to inherit properties and methods from other objects. Every JavaScript
+            object has a prototype property that points to its prototype object.</p>
+
+        <p>When a property or method is accessed on an object, JavaScript first checks if that property or method exists
+            on the object itself. If not, it looks up the prototype chain to find the property or method in the
+            prototype object.</p>
+
+        <p><strong>Example:</strong></p>
+        <pre>
+          <code>
+            function Animal(name) {
+              this.name = name;
+            }
+    
+            // Adding a method to the prototype
+            Animal.prototype.speak = function() {
+              console.log(`${this.name} makes a sound.`);
+            };
+    
+            const dog = new Animal('Dog');
+            dog.speak(); // Output: Dog makes a sound.
+          </code>
+        </pre>
+    
+        <p>In this example, the `speak` method is added to the `Animal` prototype. When an instance of `Animal` (in this
+            case, `dog`) calls the `speak` method, JavaScript looks for the method in the instance itself. Since it's
+            not found, it goes up the prototype chain and finds it in the prototype object.</p>
+
+        <p><strong>5. Instances (new keyword, this keyword):</strong></p>
+        <p>Creating instances of objects involves using the `new` keyword along with a constructor function. The `this`
+            keyword refers to the current instance of the object being created. It allows you to set and access the
+            properties of the instance.</p>
+
+        <p><strong>Example:</strong></p>
+        <pre>
+          <code>
+            function Person(name, age) {
+              this.name = name;
+              this.age = age;
+            }
+    
+            // Adding a method to the instance
+            Person.prototype.introduce = function() {
+              console.log(`Hi, I'm ${this.name} and I'm ${this.age} years old.`);
+            };
+    
+            const john = new Person('John', 25);
+            john.introduce(); // Output: Hi, I'm John and I'm 25 years old.
+          </code>
+        </pre>
+    
+        <p>In this example, the `introduce` method is added to the `Person` prototype. The `this` keyword inside the
+            method refers to the instance of `Person` (in this case, `john`), allowing access to the properties of that
+            specific instance.</p>
+    
+        <p>Understanding prototypes and instances is crucial for leveraging the power of object-oriented programming in
+            JavaScript. It promotes code reusability and efficient memory usage by allowing shared methods to be defined
+            in prototypes rather than on each individual instance.</p>
+    </section>
+
+</body>
+
+</html>
