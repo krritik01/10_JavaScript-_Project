@@ -19,7 +19,7 @@ body{
 }
 
 button{
-    padding: 6px;
+    padding: 5px;
     border-radius: 10px;
     transition: all ease 0.4s;
 }
